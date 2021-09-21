@@ -16,7 +16,7 @@ class EmploeCalculation {
      * @param emploe Emploe
      * @param oldMountDays int
      * @param newMountDays int
-     * @return money int, h int, m int
+     * @return {money: number, h: number, m: number}
      */
     static MoneyUp(emploe, oldMountDays, newMountDays) {
         const minWork = 480 // 8h * 60m
@@ -29,11 +29,11 @@ class EmploeCalculation {
         }
         do {
             result.m++
+            result.money += newMoneyInMin
             if (result.m === 60) {
                 result.h++
                 result.m = 0
             }
-            result.money += newMoneyInMin
         } while (result.money <= oldMoneyInDay)
 
         return result
